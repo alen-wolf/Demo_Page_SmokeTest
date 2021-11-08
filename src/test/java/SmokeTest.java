@@ -14,6 +14,7 @@ public class SmokeTest {
 
     @Test(testName = "End to end")
     public static void endToEnd(){
+        driver.manage().window().maximize();
         driver.get(Utils.HOME_URL);
     }
 
