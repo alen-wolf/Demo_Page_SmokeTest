@@ -5,7 +5,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class SmokeTest {
@@ -17,7 +16,7 @@ public class SmokeTest {
     }
 
     @Test(testName = "End to end")
-    public static void endToEnd() {
+    public static void endToEnd() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(Utils.HOME_URL);
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -41,8 +40,27 @@ public class SmokeTest {
 //Summary page
         SummaryPage summary = new SummaryPage(driver);
         summary.addItem();
+        Thread.sleep(1000);
         summary.subtractFromItem();
         summary.proceedCheckout();
+//Sign in page
+        SignInPage sign = new SignInPage(driver);
+        sign.enterEmail();
+        sign.createAnAccount();
+        sign.selectTitle();
+        sign.enterName();
+        sign.enterSurname();
+        sign.inputPassword();
+        sign.setDate();
+        sign.checkNewsletter();
+        sign.enterCompany();
+        sign.enterAdress();
+        sign.enterCity();
+        sign.setState();
+        sign.enterZipCode();
+        sign.enterCountry();
+        sign.enterPhoneNumber();
+        sign.registerUser();
 
     }
 
