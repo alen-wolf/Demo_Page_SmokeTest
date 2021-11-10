@@ -32,7 +32,7 @@ public class ItemPage extends PageObject {
         super(driver);
     }
 
-    private int samllRandInt(){
+    private int smallRandInt(){
         Random rand = new Random();
         return rand.nextInt(3);
     }
@@ -46,14 +46,14 @@ public class ItemPage extends PageObject {
     public void colorSelect(){this.color.click();}
 
     public void enterQuantity(){
-        String rand = String.valueOf(samllRandInt()+1);
+        String rand = String.valueOf(smallRandInt()+1);
         this.quantity.clear();
         this.quantity.sendKeys(rand);
     }
 
     public void selectSizeRand(){
         Select select = new Select(size);
-        select.selectByIndex(samllRandInt());
+        select.selectByIndex(smallRandInt());
     }
 
     public void proceedCheckout(){this.checkout.click();}
