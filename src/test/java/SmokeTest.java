@@ -41,6 +41,7 @@ public class SmokeTest {
         SummaryPage summary = new SummaryPage(driver);
         Thread.sleep(5000);
         summary.addItem();
+        Thread.sleep(5000);
         summary.subtractFromItem();
         summary.proceedCheckout();
 //Sign in page
