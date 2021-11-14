@@ -19,7 +19,7 @@ public class SmokeTest {
     public static void endToEnd() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(Utils.HOME_URL);
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 //Homepage
         HomePage homePage = new HomePage(driver);
         homePage.pressNavButton();
@@ -39,8 +39,9 @@ public class SmokeTest {
         item.proceedCheckout();
 //Summary page
         SummaryPage summary = new SummaryPage(driver);
+        Thread.sleep(5000);
         summary.addItem();
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         summary.subtractFromItem();
         summary.proceedCheckout();
 //Sign in page
@@ -61,7 +62,26 @@ public class SmokeTest {
         sign.enterCountry();
         sign.enterPhoneNumber();
         sign.registerUser();
-
+//Address page
+        AddressPage address = new AddressPage(driver);
+        address.enterComment();
+        address.proceedCheckout();
+//Shipping page
+        ShippingPage shipping = new ShippingPage(driver);
+        shipping.acceptTermsOfService();
+        shipping.openTermsOfService();
+        Thread.sleep(10000);
+        shipping.closeTermsOfService();
+        shipping.proceedCheckout();
+//PaymentPage
+        PaymentPage payment = new PaymentPage(driver);
+        payment.selectPayment();
+        payment.confirmOrder();
+        payment.toOrders();
+//Orders page
+        OrdersPage order = new OrdersPage(driver);
+        order.openOrderDetails();
+        Thread.sleep(5000);
     }
 
     @AfterSuite
