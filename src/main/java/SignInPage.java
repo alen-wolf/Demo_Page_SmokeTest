@@ -119,7 +119,7 @@ public class SignInPage extends PageObject{
 
     public void setState(){
         Select selectState = new Select(this.state);
-        selectState.selectByIndex(32);
+        selectState.selectByIndex(33);
     }
 
     public void enterZipCode(){this.zipCode.sendKeys("10001");}
@@ -136,4 +136,6 @@ public class SignInPage extends PageObject{
     }
 
     public void registerUser(){this.register.click();}
+
+    public String getPhoneNumber(){return this.mobilephone.getAttribute("value");}
 }

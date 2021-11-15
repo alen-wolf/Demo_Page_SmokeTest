@@ -28,6 +28,9 @@ public class ItemPage extends PageObject {
     @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span")
     private WebElement checkout;
 
+    @FindBy(id = "our_price_display")
+    private WebElement price;
+
     public ItemPage(WebDriver driver) {
         super(driver);
     }
@@ -58,5 +61,13 @@ public class ItemPage extends PageObject {
 
     public void proceedCheckout(){this.checkout.click();}
 
+    public String getQuantity(){return this.quantity.getAttribute("value");}
+
+    public String getSize(){
+        Select select = new Select(size);
+        return select.getFirstSelectedOption().getText();
+    }
+
+    public String getPrice(){return this.price.getText();}
 
 }
