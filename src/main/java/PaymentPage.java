@@ -13,14 +13,22 @@ public class PaymentPage extends PageObject{
     @FindBy(xpath = "//*[@id=\"center_column\"]/p/a")
     private WebElement backToOrders;
 
+    @FindBy(css = "#center_column > form > div")
+    private WebElement orderInfo;
+
     public PaymentPage(WebDriver driver) {
         super(driver);
     }
+
+    public boolean isPageLoaded(){return this.payBankWire.isDisplayed();}
+
+    public boolean isOrderInfoDisplayed(){return this.orderInfo.isDisplayed();}
+
+    public boolean isOrderComplete(){return this.backToOrders.isDisplayed();}
 
     public void selectPayment(){this.payBankWire.click();}
 
     public void confirmOrder(){this.confirmOrder.click();}
 
     public void toOrders(){this.backToOrders.click();}
-
 }

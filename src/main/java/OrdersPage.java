@@ -56,6 +56,8 @@ public class OrdersPage extends PageObject{
         super(driver);
     }
 
+    public boolean isPageLoaded(){return this.details.isDisplayed();}
+
     public void openOrderDetails(){this.details.click();}
 
     public String  getFirstName(){return this.FirstName.getText();}

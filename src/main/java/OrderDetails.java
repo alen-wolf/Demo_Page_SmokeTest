@@ -97,4 +97,10 @@ public class OrderDetails {
         String newValue = String.valueOf(value*Double.parseDouble(this.quantity)+2);
         return "$"+newValue;
     }
+
+    public String fullPricePlusOne(){
+        double value = Double.parseDouble(getFullPrice().replace("$",""));
+        String plusValue = String.valueOf(value+Double.parseDouble(this.unitPrice.replace("$","")));
+        return "$"+plusValue;
+    }
 }
