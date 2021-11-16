@@ -14,8 +14,9 @@ public class AddressPage extends PageObject{
         super(driver);
     }
 
+    public boolean isPageLoaded(){return this.comment.isDisplayed();}
+
     public void enterComment(){this.comment.sendKeys("This is a test.");}
 
     public void proceedCheckout(){this.checkout.click();}
-
 }

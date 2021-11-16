@@ -88,6 +88,10 @@ public class SignInPage extends PageObject{
         this.emailInput.sendKeys(randomEmail()+"@email.com");
     }
 
+    public boolean isCreationPageLoaded(){return this.createAccount.isDisplayed();}
+
+    public boolean isFormDisplayed(){return this.title.isDisplayed();}
+
     public void createAnAccount(){this.createAccount.click();}
 
     public void selectTitle(){this.title.click();}
@@ -104,22 +108,29 @@ public class SignInPage extends PageObject{
         Select selectMonth = new Select(this.monthDate);
         Select selectYear = new Select(this.yearDate);
 
-        selectDay.selectByIndex(rand.nextInt(31-1)+1);
-        selectMonth.selectByIndex(rand.nextInt(13-1)+1);
-        selectYear.selectByIndex(rand.nextInt(122-10)+10);
+        int year = rand.nextInt(122-10)+10;
+        int month = rand.nextInt(13-1)+1;
+        int day = rand.nextInt(31-1)+1;
+
+        if(month == 2)
+            day = rand.nextInt(28 - 1) + 1;
+
+        selectDay.selectByIndex(day);
+        selectMonth.selectByIndex(month);
+        selectYear.selectByIndex(year);
     }
 
     public void checkNewsletter(){this.newsletter.click();}
 
     public void enterCompany(){this.company.sendKeys("AtlantBH");}
 
-    public void enterAdress(){this.adress.sendKeys("Fifth Avenue");}
+    public void enterAddress(){this.adress.sendKeys("Fifth Avenue");}
 
     public void enterCity(){this.city.sendKeys("New York");}
 
     public void setState(){
         Select selectState = new Select(this.state);
-        selectState.selectByIndex(32);
+        selectState.selectByIndex(33);
     }
 
     public void enterZipCode(){this.zipCode.sendKeys("10001");}
@@ -136,4 +147,6 @@ public class SignInPage extends PageObject{
     }
 
     public void registerUser(){this.register.click();}
+
+    public String getPhoneNumber(){return this.mobilephone.getAttribute("value");}
 }
