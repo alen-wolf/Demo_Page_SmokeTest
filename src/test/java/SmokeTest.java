@@ -34,7 +34,7 @@ public class SmokeTest {
         driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
     }
 
-    @Test(testName = "New user checkout flow",invocationCount = 20)
+    @Test(testName = "New user checkout flow",invocationCount = 5)
     public static void endToEnd() throws InterruptedException {
 //Instantiate OrderDetails Data Class
         OrderDetails details = new OrderDetails();
